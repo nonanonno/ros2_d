@@ -1,0 +1,30 @@
+{
+    "authors": [
+        "nonanonno"
+    ],
+    "copyright": "Copyright © 2020, nonanonno",
+    "description": "ROS2 for Dlang",
+    "license": "Apache-2.0",
+    "name": "rcld",
+    "version": "0.0.1",
+    "configurations": [
+        {
+            "name": "library",
+            "targetType": "library"
+        },
+        {
+            "name": "unittest",
+            "targetType": "library"
+        }
+    ],
+    "dependencies": {
+        "silly": "~>1.0.2"
+    },
+    "lflags": [
+        "-L/opt/ros/foxy/lib"
+    ],
+    "libs": [
+        "rcl",
+        "rcutils"
+    ]
+}
