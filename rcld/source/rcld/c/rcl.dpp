@@ -1,2 +1,15 @@
 module rcld.c.rcl;
 #include <rcl/rcl.h>
+#include <rosidl_runtime_c/action_type_support_struct.h>
+#include <rosidl_runtime_c/message_type_support_struct.h>
+#include <rosidl_runtime_c/primitives_sequence.h>
+#include <rosidl_runtime_c/service_type_support_struct.h>
+#include <rosidl_runtime_c/string_functions.h>
+#include <rosidl_runtime_c/u16string_functions.h>
+#include <rosidl_runtime_c/visibility_control.h>
+#include <rosidl_runtime_c/message_initialization.h>
+#include <rosidl_runtime_c/primitives_sequence_functions.h>
+#include <rosidl_runtime_c/sequence_bound.h>
+#include <rosidl_runtime_c/string_bound.h>
+#include <rosidl_runtime_c/string.h>
+#include <rosidl_runtime_c/u16string.h>

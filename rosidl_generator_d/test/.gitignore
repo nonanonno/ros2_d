@@ -1,0 +1,16 @@
+.dub
+docs.json
+__dummy.html
+docs/
+/test_interfaces
+test_interfaces.so
+test_interfaces.dylib
+test_interfaces.dll
+test_interfaces.a
+test_interfaces.lib
+test_interfaces-test-*
+*.exe
+*.o
+*.obj
+*.lst
+dub.selections.json

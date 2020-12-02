@@ -1,0 +1,28 @@
+{
+	"authors": [
+		"nonanonno"
+	],
+	"copyright": "Copyright © 2020, nonanonno",
+	"dependencies": {
+		"silly": "~>1.0.2",
+		"rosidl_generator_d": "~>1.0.0"
+	},
+	"description": "A minimal D application.",
+	"license": "Apache-2.0",
+	"name": "test_interfaces",
+	"configurations": [
+		{
+			"name": "unittest"
+		}
+	],
+	"lflags": [
+		"-L/opt/ros/foxy/lib",
+		"-L."
+	],
+	"libs":[
+		"rosidl_generator_d__rosidl_typesupport_c",
+		"rosidl_generator_d__rosidl_generator_c",
+		"rcutils",
+		"rcpputils"
+	]
+}
