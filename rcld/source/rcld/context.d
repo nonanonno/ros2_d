@@ -1,6 +1,6 @@
 module rcld.context;
 
-import rcld.c.rcl;
+import rcl_bind;
 import core.runtime;
 import std.exception;
 import rcld.utils;

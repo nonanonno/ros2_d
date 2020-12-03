@@ -1,0 +1,17 @@
+.dub
+docs.json
+__dummy.html
+docs/
+/ros2_d_test
+ros2_d_test.so
+ros2_d_test.dylib
+ros2_d_test.dll
+ros2_d_test.a
+ros2_d_test.lib
+ros2_d_test-test-*
+*.exe
+*.o
+*.obj
+*.lst
+rcld_test-test-unittest
+dub.selections.json

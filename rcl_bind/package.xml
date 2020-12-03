@@ -1,18 +1,16 @@
 <?xml version="1.0"?>
 <?xml-model href="http://download.ros.org/schema/package_format3.xsd" schematypens="http://www.w3.org/2001/XMLSchema"?>
 <package format="3">
-  <name>rcld</name>
+  <name>rcl_bind</name>
   <version>0.0.1</version>
-  <description>ROS2 for Dlang</description>
+  <description>rcl D binding</description>
   <maintainer email="as.nonanonno@gmail.com">nonanonno</maintainer>
   <license>Apache License 2.0</license>
 
   <buildtool_depend>ament_cmake</buildtool_depend>
 
-  <depend>rcl_bind</depend>
-
-  <test_depend>rosidl_generator_d</test_depend>
-
+  <depend>rcl</depend>
+  <depend>rcutils</depend>
 
   <export>
     <build_type>ament_cmake</build_type>

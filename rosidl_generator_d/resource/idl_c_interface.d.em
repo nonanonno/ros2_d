@@ -3,7 +3,7 @@
 // generated_code does not contain a copyright notice
 module @(package_name).@(type_)_c_interface;
 import core.stdc.stdint;
-import rcld.c.rcl;
+import rcl_bind;
 
 @[if type_ == 'msg']@
 @{

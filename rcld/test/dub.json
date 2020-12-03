@@ -1,0 +1,25 @@
+{
+	"authors": [
+		"nonanonno"
+	],
+	"copyright": "Copyright © 2020, nonanonno",
+	"description": "rcld test package",
+	"license": "Apache-2.0",
+	"name": "rcld_test",
+	"configurations": [
+        {
+            "name": "unittest",
+            "targetType": "library"
+        }
+    ],
+	"dependencies": {
+		"silly": "~>1.0.2",
+		"rcld": {
+			"path": "../"
+		},
+		"rcld_test_msgs": "~>1.0.0"
+	},
+	"lflags": [
+		"-L."
+	]
+}

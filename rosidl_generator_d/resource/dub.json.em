@@ -16,7 +16,7 @@ from rosidl_generator_d import solve_depends_package
 @[for dep in solve_depends_package(contents, package_name)]@
         "@(dep)": "~>1.0.0",
 @[end for]@
-        "rcld": "~>0.0.1"
+        "rcl_bind": "~>0.0.1"
     },
     "lflags": [
         "-L$PACKAGE_DIR/../../lib"

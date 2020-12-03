@@ -1,4 +1,4 @@
-module rcld.c.rcl;
+module rcl_bind;
 #include <rcl/rcl.h>
 #include <rosidl_runtime_c/action_type_support_struct.h>
 #include <rosidl_runtime_c/message_type_support_struct.h>

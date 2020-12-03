@@ -33,7 +33,7 @@
   <test_depend>rosidl_generator_c</test_depend>
   <test_depend>rosidl_generator_cpp</test_depend>
   <test_depend>rosidl_typesupport_c</test_depend>
-  <test_depend>rcld</test_depend>
+  <test_depend>rcl_bind</test_depend>
 
   <member_of_group>rosidl_generator_packages</member_of_group>
 

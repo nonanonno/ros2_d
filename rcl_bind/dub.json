@@ -3,22 +3,23 @@
         "nonanonno"
     ],
     "copyright": "Copyright © 2020, nonanonno",
-    "description": "ROS2 for Dlang",
+    "description": "rcl D binding",
     "license": "Apache-2.0",
-    "name": "rcld",
+    "name": "rcl_bind",
     "version": "0.0.1",
     "configurations": [
         {
             "name": "library",
             "targetType": "library"
-        },
-        {
-            "name": "unittest",
-            "targetType": "library"
         }
     ],
-    "dependencies": {
-        "silly": "~>1.0.2",
-        "rcl_bind": "~>0.0.1"
-    }
+    "lflags": [
+        "-L/opt/ros/foxy/lib"
+    ],
+    "libs": [
+        "rcl",
+        "rcutils",
+        "rosidl_typesupport_c",
+        "rosidl_runtime_c"
+    ]
 }

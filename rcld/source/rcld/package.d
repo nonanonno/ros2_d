@@ -1,6 +1,6 @@
 module rcld;
 
-public import rcld.context, rcld.node;
+public import rcld.context, rcld.node, rcld.publisher;
 import core.runtime;
 
 void init(in CArgs args = Runtime.cArgs) {

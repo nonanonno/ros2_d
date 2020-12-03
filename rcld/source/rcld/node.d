@@ -1,9 +1,10 @@
 module rcld.node;
 
-import rcld.c.rcl;
+import rcl_bind;
 import rcld.context;
 import std.exception;
 import std.string;
+import rcld.publisher;
 
 class Node {
     this(in string node_name, in string node_namespace) {
@@ -24,6 +25,10 @@ class Node {
     }
 
     void terminate() {
+        foreach (pub; publishers_) {
+            pub.terminate(this);
+        }
+        publishers_ = [];
         if (rcl_node_is_valid(&node_handle_)) {
             rcl_node_fini(&node_handle_);
         }
@@ -31,6 +36,7 @@ class Node {
 
 package:
     rcl_node_t node_handle_;
+    BasePublisher[] publishers_;
 }
 
 unittest {
