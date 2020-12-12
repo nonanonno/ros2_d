@@ -5,6 +5,7 @@ import rcld.context;
 import std.exception;
 import std.string;
 import rcld.publisher;
+import rcld.subscription;
 
 class Node {
     this(in string node_name, in string node_namespace) {
@@ -28,7 +29,11 @@ class Node {
         foreach (pub; publishers_) {
             pub.terminate(this);
         }
+        foreach (sub; subscriptions_) {
+            sub.terminate(this);
+        }
         publishers_ = [];
+        subscriptions_ = [];
         if (rcl_node_is_valid(&node_handle_)) {
             rcl_node_fini(&node_handle_);
         }
@@ -37,6 +42,7 @@ class Node {
 package:
     rcl_node_t node_handle_;
     BasePublisher[] publishers_;
+    BaseSubscription[] subscriptions_;
 }
 
 unittest {

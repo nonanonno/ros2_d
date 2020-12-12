@@ -4,6 +4,8 @@ import rcl_bind;
 import core.runtime;
 import std.exception;
 import rcld.utils;
+import rcld.node;
+import std.algorithm;
 
 class Context {
     this(in CArgs args) {
@@ -18,9 +20,20 @@ class Context {
     }
 
     void shutdown() {
+        foreach (node; nodes_) {
+            node.terminate();
+        }
+        nodes_ = [];
         if (context_ != rcl_context_t()) {
             rcl_shutdown(&context_);
+            // rcl_context_fini(&context_);
         }
+    }
+
+    void addNode(Node node) {
+        assert(node);
+        enforce(!nodes_.canFind(node));
+        nodes_ ~= node;
     }
 
     ~this() {
@@ -30,6 +43,7 @@ class Context {
 package:
     rcutils_allocator_t allocator_;
     rcl_context_t context_;
+    Node[] nodes_;
 }
 
 class Global {

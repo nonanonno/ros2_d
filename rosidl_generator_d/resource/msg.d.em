@@ -45,11 +45,11 @@ struct @(type_name) {
         destroy!This(msg);
     }
 
-    static void convert(in This src, ref CMessageType dst) {
+    static void convert(in This src, ref CMessageType dst) nothrow {
         @('.'.join(this_module)).convert(src, dst);
     }
 
-    static void convert(in CMessageType src, ref This dst) {
+    static void convert(in CMessageType src, ref This dst) nothrow {
         @('.'.join(this_module)).convert(src, dst);
     }
 

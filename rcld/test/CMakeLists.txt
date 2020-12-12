@@ -19,7 +19,7 @@ add_test(NAME rcld_test_register
 add_test(NAME rcld_test
     COMMAND ${CMAKE_COMMAND} -E env
     LD_LIBRARY_PATH=${LD_LIBRARY_PATH}:.:/opt/ros/foxy/lib
-    dub test --root=${CMAKE_CURRENT_SOURCE_DIR}
+    dub test --root=${CMAKE_CURRENT_SOURCE_DIR} -- -t 1
 )
 
 add_test(NAME rcld_test_unregister
