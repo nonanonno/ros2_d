@@ -30,3 +30,5 @@ install(
 install(
   CODE "execute_process(COMMAND dub add-local ${CMAKE_INSTALL_PREFIX}/import/${PROJECT_NAME})"
 )
+
+ament_package()

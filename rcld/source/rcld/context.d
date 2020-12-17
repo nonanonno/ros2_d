@@ -8,7 +8,7 @@ import rcld.node;
 import std.algorithm;
 
 class Context {
-    this(in CArgs args) {
+    this(in CArgs args = Runtime.cArgs) {
         auto options = rcl_get_zero_initialized_init_options();
         allocator_ = rcutils_get_default_allocator();
         enforce(rcl_init_options_init(&options, allocator_) == 0);
@@ -27,6 +27,7 @@ class Context {
         if (context_ != rcl_context_t()) {
             rcl_shutdown(&context_);
             // rcl_context_fini(&context_);
+            context_ = rcl_context_t();
         }
     }
 

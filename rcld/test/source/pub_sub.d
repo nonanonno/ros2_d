@@ -13,57 +13,43 @@ import core.stdc.stdio;
 
 unittest {
 
-    init();
-    auto node = new Node("test", "");
-    auto pub = new Publisher!TestA(node, "test_a");
+    auto cxt = new Context();
+    auto node = new Node("test_pub_sub_pub", "test_rcld", cxt);
+    auto pub = new Publisher!TestA(node, "/test_rcld/pub_sub_a");
     auto topics = executeShell("ros2 topic list");
 
     auto msg = TestA();
     msg.time = 10;
     pub.publish(msg);
 
-    shutdown();
+    cxt.shutdown();
 
-    assert(topics.output.split('\n').canFind("/test_a"));
+    assert(topics.output.split('\n').canFind("/test_rcld/pub_sub_a"));
 }
 
-void listener() {
-    try {
-        auto node_sub = new Node("test_sub", "");
-        auto sub = new Subscription!TestA(node_sub, "/test_b");
-        sub.callback_ = delegate(in TestA msg) { assert(msg.time == 10); };
-        auto exec = new Executor();
-        exec.addNode(node_sub);
-        exec.spinOnce();
-    }
-    catch (Exception e) {
-        writeln(e);
-        assert(false);
-    }
-    finally {
-        send(ownerTid, true);
-    }
-}
+unittest {
 
-void talker() {
+    auto cxt = new Context();
 
-    auto node_pub = new Node("test_pub", "");
-    auto pub = new Publisher!TestA(node_pub, "/test_b");
+    auto exec = new Executor(cxt);
+
+    auto node_pub = new Node("pub_sub_talker", "test_rcld", cxt);
+    auto pub = new Publisher!TestA(node_pub, "/test_rcld/pub_sub_b");
+
+    auto node_sub = new Node("pub_sub_listener", "test_rcld", cxt);
+    auto sub = new Subscription!TestA(node_sub, "/test_rcld/pub_sub_b");
+    sub.callback_ = delegate(in TestA msg) { assert(msg.time == 10); };
+
+    exec.addNode(node_sub);
 
     Thread.sleep(1.seconds);
 
     auto msg = TestA();
     msg.time = 10;
     pub.publish(msg);
-}
 
-unittest {
+    exec.spinOnce();
 
-    init();
-
-    spawn(&listener);
-    talker();
-    assert(receiveOnly!(bool));
-    shutdown();
+    cxt.shutdown();
 
 }

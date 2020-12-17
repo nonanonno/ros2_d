@@ -10,9 +10,9 @@ import std.algorithm;
 import core.time;
 
 class Executor {
-    this() {
+    this(Context context = null) {
         wait_set_handle_ = rcl_get_zero_initialized_wait_set();
-        auto cxt = Global.instance().getDefaultContext();
+        auto cxt = context ? context : Global.instance().getDefaultContext();
         enforce(rcl_wait_set_init(&wait_set_handle_, 0, 0, 0, 0, 0, 0,
                 &cxt.context_, rcutils_get_default_allocator()) == 0);
     }
