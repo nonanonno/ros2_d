@@ -127,6 +127,9 @@ def value_type_of(type_):
 def solve_depends(contents, this_module: set) -> set:
     depends = OrderedDict()
     for c in contents:
+        if isinstance(c, Service) or isinstance(c, Action):
+            continue
+
         for m in c.structure.members:
             type_ = value_type_of(m.type)
             if isinstance(type_, NamespacedType):
@@ -139,6 +142,9 @@ def solve_depends(contents, this_module: set) -> set:
 def solve_depends_package(contents, package_name: str) -> set:
     depends = OrderedDict()
     for c in contents:
+        if isinstance(c, Service) or isinstance(c, Action):
+            continue
+
         for m in c.structure.members:
             type_ = value_type_of(m.type)
             if isinstance(type_, NamespacedType):
@@ -268,7 +274,7 @@ def assign_text_d_to_c(member, src: str, dst: str) -> str:
     elif isinstance(type_, AbstractWString):
         assign = 'rosidl_runtime_c__U16String__assign(&{0}, cast(const(ushort*))toUTF16z({1}))'
     elif isinstance(type_, NamespacedType):
-        assign = 'convert({1}, {0})'
+        assign = msg_type_only_to_d(type_) + '.convert({1}, {0})'
     else:
         assert False, type_
 
@@ -290,7 +296,7 @@ def assign_text_c_to_d(member, src: str, dst: str) -> str:
     elif isinstance(type_, AbstractWString):
         assign = '{0} = fromStringz(cast(const(wchar*)){1}.data).dup()'
     elif isinstance(type_, NamespacedType):
-        assign = 'convert({1}, {0})'
+        assign = msg_type_only_to_d(type_) + '.convert({1}, {0})'
     else:
         assert False, type_
 
