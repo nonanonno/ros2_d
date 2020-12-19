@@ -1,0 +1,29 @@
+{
+	"authors": [
+		"nonanonno"
+	],
+	"copyright": "Copyright © 2020, nonanonno",
+	"description": "Example of using rcld",
+	"license": "proprietary",
+	"name": "rcld_examples",
+	"dependencies": {
+		"rcld": "~>0.0.1",
+		"std_msgs": "~>1.0.0"
+	},
+	"configurations": [
+		{
+			"name": "talker",
+			"targetType": "executable",
+			"targetPath": "bin/",
+			"targetName": "talker",
+			"sourcePaths": ["fons/talker"]
+		},
+		{
+			"name": "listener",
+			"targetType": "executable",
+			"targetPath": "bin/",
+			"targetName": "listener",
+			"sourcePaths": ["fons/listener"]
+		}
+	]
+}
